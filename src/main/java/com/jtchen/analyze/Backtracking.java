@@ -3,6 +3,7 @@ package com.jtchen.analyze;
 import com.jtchen.structure.MidProduct;
 
 import static com.jtchen.structure.MidProduct.*;
+import static com.jtchen.tools.strTool.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,8 +77,16 @@ public class Backtracking {
             var right2 = new ArrayList<List<String>>();
 
             var tmp = new ArrayList<String>();
+
+            // 改名
+            String tmpS = products.get(i).getKey();
+            String tmpR2 = tmpS + '"';
+            while (contains(products, tmpR2)) {
+                tmpR2 = tmpR2 + '"';
+            }
+
             tmp.add(left);
-            tmp.add(products.get(i).getKey() + '"');
+            tmp.add(tmpR2);
             right1.add(new ArrayList<>(tmp));
 
             for (List<String> list : lists) {
@@ -99,10 +108,9 @@ public class Backtracking {
             }
 
             // 更新products
-            /*products.get(i).setList(right1);*/
 
-            products.add(new MidProduct(products.get(i).getKey(), new ArrayList<>(right1)));
-            products.add(new MidProduct(products.get(i).getKey() + '"', new ArrayList<>(right2)));
+            products.add(new MidProduct(tmpS, new ArrayList<>(right1)));
+            products.add(new MidProduct(tmpR2, new ArrayList<>(right2)));
 
             products.remove(i--);
         }

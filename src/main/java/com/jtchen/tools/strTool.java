@@ -1,5 +1,7 @@
 package com.jtchen.tools;
 
+import com.jtchen.structure.MidProduct;
+
 import java.util.*;
 
 /**
@@ -98,5 +100,12 @@ public class strTool {
             else builder.append(list.get(i));
         }
         return builder.toString();
+    }
+
+    public static boolean contains(List<MidProduct> products, String key) {
+        for (var product : products) {
+            if (product.getKey().equals(key)) return true;
+        }
+        return false;
     }
 }

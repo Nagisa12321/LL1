@@ -46,18 +46,18 @@ public class Table {
 
     public void printMap() {
         System.out.println("map:");
-        System.out.printf("%-20s", "");
+        System.out.printf("%-15s", "");
         for (var x : terminatorSet) {
-            System.out.printf("%-20s", x);
+            System.out.printf("%-15s", x);
         }
         System.out.println();
         for (var y : nonTerminalSet) {
-            System.out.printf("%-20s", y);
+            System.out.printf("%-15s", y);
             for (var x : terminatorSet) {
                 var list = getList(y, x);
                 if (list.size() == 0)
-                    System.out.printf("%-20s", "null");
-                else System.out.printf("%-20s", toProduction(y, list));
+                    System.out.printf("%-15s", "null");
+                else System.out.printf("%-15s", toProduction(y, list));
             }
             System.out.println();
         }
