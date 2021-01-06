@@ -7,6 +7,7 @@ import static com.jtchen.tools.strTool.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -47,6 +48,8 @@ public class Backtracking {
         // 转化为中间产物方便操作遍历
         var products = toMid(map);
 
+        var name = new HashSet<String>();
+
         // 遍历并且逐个提左因子
         for (int i = 0; i < products.size(); i++) {
             var lists = products.get(i).getList();
@@ -81,7 +84,7 @@ public class Backtracking {
             // 改名
             String tmpS = products.get(i).getKey();
             String tmpR2 = tmpS + '"';
-            while (contains(products, tmpR2)) {
+            while (!name.add(tmpR2)) {
                 tmpR2 = tmpR2 + '"';
             }
 

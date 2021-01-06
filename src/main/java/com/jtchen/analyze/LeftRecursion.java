@@ -157,6 +157,8 @@ public class LeftRecursion {
 
         // 处理非左递归右边式子
         for (var list2 : notContains) {
+            if (list2.size() == 1 && list2.get(0).equals("ε"))
+                list2.clear();
             list2.add(first + '`');
         }
 
