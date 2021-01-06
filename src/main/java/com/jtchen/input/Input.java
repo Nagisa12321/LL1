@@ -1,6 +1,6 @@
 package com.jtchen.input;
 
-import com.jtchen.analyze.Follow;
+import com.jtchen.analyze.Parser;
 import com.jtchen.structure.FirstSet;
 import com.jtchen.structure.FollowSet;
 import com.jtchen.structure.Table;
@@ -43,6 +43,7 @@ public class Input {
 
         // 消除回溯
         map = EliminateBacktracking(map);
+        System.out.println("Eliminate the left factor: \n" + toMapString(map));
 
         // 非终结符
         var nonTerminalSet = NonTerminalSet(map);
@@ -70,6 +71,15 @@ public class Input {
                 toFirstMap(firstLists),
                 toFollowMap(followList));
         table.printMap();
+
+        // 分析字符串
+        System.out.println("输入你要分析的字符串");
+
+        String s = "";
+
+        Parser parser = new Parser(table, first);
+        System.out.println(parser.isSentence(s).getStackLine());
+        System.out.println(parser.isSentence(s).isSuccess());
     }
 }
 

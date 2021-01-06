@@ -3,7 +3,6 @@ package com.jtchen.analyze;
 import com.jtchen.structure.MidProduct;
 
 import static com.jtchen.structure.MidProduct.*;
-import static com.jtchen.tools.mapTool.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +24,6 @@ public class Backtracking {
     EliminateBacktracking(HashMap<String, List<List<String>>> map) {
         // 消除左因子
         map = extractLeftFactor(map);
-        System.out.println("Eliminate the left factor: \n" + toMapString(map));
 
         return map;
     }

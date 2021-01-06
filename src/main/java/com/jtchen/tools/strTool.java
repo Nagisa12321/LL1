@@ -39,6 +39,8 @@ public class strTool {
             if (tmp[i].equals("->") && i != 1)
                 throw new IllegalArgumentException("输入式子错误");
         }
+        // '|' 在最后
+        if (tmp[tmp.length - 1].equals("|")) throw new IllegalArgumentException("输入式子错误");
 
         // 循环填入list中
         List<List<String>> list = new ArrayList<>();
@@ -78,25 +80,6 @@ public class strTool {
     public static String FirstNonterminal(String s) {
         String[] strings = s.split(" ");
         return strings[0];
-    }
-
-    /**
-     * 给出一个非终结符集合, 判断非终结符a是否排在S前面
-     *
-     * @param strings 非终结符集合
-     * @param a       非终结符a
-     * @param S       非终结符S
-     * @return a是否排在s前面
-     */
-    public static boolean isFront(String[] strings, String a, String S) {
-        int idxA = 0;
-        int idxS = 0;
-        for (int i = 0; i < strings.length; i++) {
-            if (strings[i].equals(a)) idxA = i;
-            if (strings[i].equals(S)) idxS = i;
-        }
-
-        return idxA < idxS;
     }
 
     /* 去重复 */

@@ -14,8 +14,17 @@ import java.util.Set;
  */
 public class Table {
     private final HashMap<String, HashMap<String, List<String>>> map;
+
     private final Set<String> nonTerminalSet;
     private final Set<String> terminatorSet;
+
+    public Set<String> getNonTerminalSet() {
+        return nonTerminalSet;
+    }
+
+    public Set<String> getTerminatorSet() {
+        return terminatorSet;
+    }
 
     public Table(Set<String> nonTerminalSet, Set<String> terminatorSet) {
         this.nonTerminalSet = nonTerminalSet;
@@ -36,6 +45,7 @@ public class Table {
     }
 
     public void printMap() {
+        System.out.println("map:");
         System.out.printf("%-20s", "");
         for (var x : terminatorSet) {
             System.out.printf("%-20s", x);
@@ -51,5 +61,6 @@ public class Table {
             }
             System.out.println();
         }
+        System.out.println();
     }
 }
