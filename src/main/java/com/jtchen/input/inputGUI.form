@@ -201,7 +201,7 @@
       <scrollpane id="dfb82">
         <constraints>
           <grid row="3" column="2" row-span="7" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="500" height="200"/>
+            <preferred-size width="700" height="200"/>
           </grid>
         </constraints>
         <properties/>

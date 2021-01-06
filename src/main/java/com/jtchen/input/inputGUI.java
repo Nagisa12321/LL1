@@ -1,5 +1,6 @@
 package com.jtchen.input;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import com.jtchen.analyze.Parser;
 import com.jtchen.structure.FirstSet;
 import com.jtchen.structure.FollowSet;
@@ -164,6 +165,7 @@ public class inputGUI {
     }
 
     public static void main(String[] args) {
+        FlatLightLaf.install();
         JFrame frame = new JFrame("inputGUI");
         frame.setContentPane(new inputGUI().LL1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

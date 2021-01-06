@@ -25,6 +25,7 @@ public class RightFirstSet {
         this.set = set;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("First(");
