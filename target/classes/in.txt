@@ -1,2 +1,3 @@
-S -> ε
+mr -> rc c rc | rc r rc
+rc -> n | w | t | nm
 #

@@ -75,7 +75,7 @@ public class Input {
         // 分析字符串
         System.out.println("输入你要分析的字符串");
 
-        String s = "";
+        String s = "t c w";
 
         Parser parser = new Parser(table, first);
         System.out.println(parser.isSentence(s).getStackLine());

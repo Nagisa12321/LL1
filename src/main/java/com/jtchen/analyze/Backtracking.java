@@ -71,6 +71,7 @@ public class Backtracking {
 
             // A -> aA` | b
             var right1 = new ArrayList<List<String>>();
+
             // A` -> AB | ε
             var right2 = new ArrayList<List<String>>();
 
@@ -98,8 +99,12 @@ public class Backtracking {
             }
 
             // 更新products
-            products.get(i).setList(right1);
-            products.add(new MidProduct(products.get(i).getKey() + '"', right2));
+            /*products.get(i).setList(right1);*/
+
+            products.add(new MidProduct(products.get(i).getKey(), new ArrayList<>(right1)));
+            products.add(new MidProduct(products.get(i).getKey() + '"', new ArrayList<>(right2)));
+
+            products.remove(i--);
         }
 
         return toMap(products);
