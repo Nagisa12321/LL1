@@ -1,8 +1,6 @@
 package com.jtchen.tools;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author jtchen
@@ -34,7 +32,8 @@ public class mapTool {
      * @param list 待添加的非终结符表
      * @param start 开始字符
      */
-    public static void dfs(Map<String, List<List<String>>> map, List<String> list, String start) {
+    public static void dfs
+    (Map<String, List<List<String>>> map, List<String> list, String start) {
 
         // 不是非终结符
         if (!map.containsKey(start)) return;
@@ -50,5 +49,31 @@ public class mapTool {
                 dfs(map, list, s);
             }
         }
+    }
+
+    /**
+     * 同过map求出非终结符集
+     * @param map 诸多式子
+     * @return 非终结符集合
+     */
+    public static Set<String> NonTerminalSet(HashMap<String, List<List<String>>> map){
+        return map.keySet();
+    }
+
+    /**
+     * 同过map求出终结符集
+     * @param map 诸多式子
+     * @return 终结符集合
+     */
+    public static Set<String> TerminatorSet(HashMap<String, List<List<String>>> map) {
+        var set = new HashSet<String>();
+        for (var entry : map.entrySet()) {
+            for (var lists : entry.getValue()) {
+                for (var s : lists) {
+                    if (!map.containsKey(s)) set.add(s);
+                }
+            }
+        }
+        return set;
     }
 }

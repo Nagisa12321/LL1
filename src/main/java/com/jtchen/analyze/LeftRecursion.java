@@ -15,6 +15,13 @@ import java.util.List;
  * @date 2021/1/4 0:07
  */
 public class LeftRecursion {
+
+    private static String first;
+
+    public static String getFirst() {
+        return first;
+    }
+
     /**
      * 传进来的表达式用哈希表来存储,哈希表左侧存储等式左边字母
      * 右侧是用|分割而成的List<String>组合
@@ -31,7 +38,8 @@ public class LeftRecursion {
         for (String s : list) ConversionMap(s, map);
 
         // 首个非终结符
-        String first = FirstNonterminal(list.get(0));
+        first = FirstNonterminal(list.get(0));
+
 
         System.out.println("Original:\n" + toMapString(map));
         // 消除左递归
@@ -75,26 +83,24 @@ public class LeftRecursion {
                 String change = NonTerminal[j];
 
                 for (int k = 0; k < list.size(); k++) {
-                    for (int l = 0; l < list.get(k).size(); l++) {
-                        String s = list.get(k).get(l);
-                        if (s.equals(change)) {
-                            var mapList = map.get(s);
-                            int idx = list.get(k).indexOf(s);
-                            list.get(k).remove(s);
-                            var tmpRight = new ArrayList<>(list.get(k));
-                            for (int m = 0; m < mapList.get(0).size(); m++) {
-                                list.get(k).add(idx + m, mapList.get(0).get(m));
-                            }
-                            // 加入其他的
-                            for (int m = 1; m < mapList.size(); m++) {
-                                // mapList.get(m), tmpRight
-                                var tmp = new ArrayList<>(tmpRight);
+                    String s = list.get(k).get(0);
+                    if (s.equals(change)) {
+                        var mapList = map.get(s);
+                        int idx = list.get(k).indexOf(s);
+                        list.get(k).remove(s);
+                        var tmpRight = new ArrayList<>(list.get(k));
+                        for (int m = 0; m < mapList.get(0).size(); m++) {
+                            list.get(k).add(idx + m, mapList.get(0).get(m));
+                        }
+                        // 加入其他的
+                        for (int m = 1; m < mapList.size(); m++) {
+                            // mapList.get(m), tmpRight
+                            var tmp = new ArrayList<>(tmpRight);
 
-                                for (int n = 0; n < mapList.get(m).size(); n++) {
-                                    tmp.add(idx + n, mapList.get(m).get(n));
-                                }
-                                list.add(tmp);
+                            for (int n = 0; n < mapList.get(m).size(); n++) {
+                                tmp.add(idx + n, mapList.get(m).get(n));
                             }
+                            list.add(tmp);
                         }
                     }
                 }

@@ -1,3 +1,4 @@
-S -> a b | a c | a
-Q -> S a
+E -> E + T | T
+T -> T * F | F
+F -> ( E ) | i
 #

@@ -7,6 +7,7 @@ import java.util.*;
  * @version 1.0
  * @date 2021/1/4 0:17
  */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class strTool {
     /**
      * @param str 每一行输入的式子 e.g. S' -> a b c S' | @  --> S' -> {{a, b, c, S'}, { @}}
@@ -70,6 +71,7 @@ public class strTool {
 
     /**
      * 给出一个式子, 提取其非终结符(左侧)
+     *
      * @param s e.g. "S -> Q c | c"
      * @return e.g. "S"
      */
@@ -80,9 +82,10 @@ public class strTool {
 
     /**
      * 给出一个非终结符集合, 判断非终结符a是否排在S前面
+     *
      * @param strings 非终结符集合
-     * @param a 非终结符a
-     * @param S 非终结符S
+     * @param a       非终结符a
+     * @param S       非终结符S
      * @return a是否排在s前面
      */
     public static boolean isFront(String[] strings, String a, String S) {
@@ -94,5 +97,23 @@ public class strTool {
         }
 
         return idxA < idxS;
+    }
+
+    /* 去重复 */
+    public static void removeDuplicate(List list) {
+        HashSet h = new HashSet(list);
+        list.clear();
+        list.addAll(h);
+    }
+
+    public static String toProduction(String key, List<String> list) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(key).append(" -> ");
+        for (int i = 0; i < list.size(); i++) {
+            if (i < list.size() - 1)
+                builder.append(list.get(i)).append(" ");
+            else builder.append(list.get(i));
+        }
+        return builder.toString();
     }
 }
